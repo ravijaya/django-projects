@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-10 col-xs-10 col-sm-10">
+            <h3 class="round3" style="text-align:center;">Employees</h3>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-xs-10 col-sm-10"></div>
+        <div class="col-md-2 col-xs-1 col-sm-1">
+            <br/>
+            <a href="{% url 'create_form' %}">
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </a>
+        </div>
+    </div>
+    <br/>
+    {% for employee in employees %}
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-5 col-xs-5 col-sm-5">
+            <ul class="list-group">
+                <li class="list-group-item ">
+                    <a href="{% url 'employee_details' employee.pk %}"> {{ employee.fname }} {{employee.lname}} </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <ul class="list-group">
+                <li class="list-group-item ">
+                    {{employee.department}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <ul class="list-group">
+                <li class="list-group-item ">
+                    {{employee.designation}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <a href="{% url 'employee_details' employee.pk %}">
+                <button type="button" class="btn btn-info">
+                    <span class="glyphicon glyphicon-open"></span>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-1">
+            <a href="{% url 'edit_employee' employee.pk %}">
+                <button type="button" class="btn btn-info">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-1">
+            <a href="{% url 'delete_employee' employee.pk %}">
+                <button type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<table cellpadding="5" cellspacing="5">
+    <caption><a href="add/">add emp</a></caption>
+    <tr>
+        <th>employee id</th>
+        <th>first name</th>
+        <th>last name</th>
+        <th>department</th>
+        <th>designation</th>
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+    {% for employee in employees %}
+    <tr>
+        <td><a href="details/{{employee.id}}">{{employee.id}}</a></td>
+        <td>{{employee.fname}}</td>
+        <td>{{employee.lname}}</td>
+        <td>{{employee.department}}</td>
+        <td>{{employee.designation}}</td>
+        <td><a href="edit/{{employee.id}}">edit</a></td>
+        <td><a href="delete/{{employee.id}}">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
